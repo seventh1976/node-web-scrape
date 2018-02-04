@@ -8,16 +8,23 @@ app.get('/scrape', function(req, res){
     url = 'http://www.imdb.com/title/tt1229340/';
 
     request(url, function(error, response, html){
-        var $ = cheerio.load(html);
+        if(!error){
+            var $ = cheerio.load(html);
 
-        var title, release, rating;
-        var json = {title : "", release : "", rating : ""}
+            var title, release, rating;
+            var json = {title : "", release : "", rating : ""}
 
-        $('.header').filter(function(){
-            var data = $(this);
-            title = data.children().first().text();
-            json.title = title;
-        })
+            $('.header').filter(function(){
+                var data = $(this);
+
+                title = data.children().first().text();
+
+                release = data.children().last().children().text();
+
+                json.title = title;
+                json.release = release;
+            })
+        }
     })
 })
 
