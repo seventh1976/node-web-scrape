@@ -14,7 +14,7 @@ app.get('/scrape', function(req, res){
             var title, release, rating;
             var json = {title : "", release : "", rating : ""}
 
-            $('.header').filter(function(){
+            $('.title_wrapper').filter(function(){
                 var data = $(this);
 
                 title = data.children().first().text();
@@ -25,7 +25,7 @@ app.get('/scrape', function(req, res){
                 json.release = release;
             })
 
-            $('.star-box-giga-star').filter(function(){
+            $('.ratingValue').filter(function(){
                 var data = $(this);
 
                 rating = data.text();
