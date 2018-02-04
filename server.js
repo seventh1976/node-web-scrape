@@ -5,7 +5,14 @@ var cheerio = require('cheerio');
 var app = express();
 
 app.get('/scrape', function(req, res){
+    url = 'http://www.imdb.com/title/tt1229340/';
 
+    request(url, function(error, response, html){
+        var $ = cheerio.load(html);
+
+        var title, release, rating;
+        var json = {title : "", release : "", rating : ""}
+    })
 })
 
 app.listen('8081')
