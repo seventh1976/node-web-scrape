@@ -33,7 +33,13 @@ app.get('/scrape', function(req, res){
                 json.rating = rating;
             })
         }
-    })
+
+        fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
+            console.log('File successfully written! - Check your poject directory for the output.json file');
+        })
+
+        res.send('Check your console!')
+    });
 })
 
 app.listen('8081')
