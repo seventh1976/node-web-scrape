@@ -24,6 +24,14 @@ app.get('/scrape', function(req, res){
                 json.title = title;
                 json.release = release;
             })
+
+            $('.star-box-giga-star').filter(function(){
+                var data = $(this);
+
+                rating = data.text();
+
+                json.rating = rating;
+            })
         }
     })
 })
